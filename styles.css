@@ -1,0 +1,335 @@
+:root {
+  color-scheme: light;
+  --bg-top: #eef4ef;
+  --bg-bottom: #fbfaf4;
+  --card: rgba(255, 253, 247, 0.95);
+  --card-border: rgba(35, 68, 61, 0.16);
+  --ink: #24201b;
+  --muted: #625f55;
+  --accent: #b9462d;
+  --accent-strong: #233f3a;
+  --accent-warm: #e26f42;
+  --panel: #fffaf1;
+  --shadow: 0 30px 90px rgba(27, 45, 40, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(35, 63, 58, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 63, 58, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 4%, rgba(255, 255, 255, 0.92), transparent 28%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  background-size: 28px 28px, 28px 28px, auto, auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 18px;
+}
+
+.hero-card {
+  position: relative;
+  width: min(100%, 640px);
+  padding: 38px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.hero-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(35, 63, 58, 0.08), transparent 22%),
+    linear-gradient(rgba(35, 63, 58, 0.026) 1px, transparent 1px);
+  background-size: auto, 100% 34px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 68%);
+}
+
+.eyebrow {
+  position: relative;
+  margin: 0 0 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+  max-width: 12em;
+  font-size: 2.25rem;
+  line-height: 1.18;
+}
+
+.lead {
+  margin: 18px 0 0;
+  max-width: 56ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.puzzle-panel,
+.setup-panel,
+.diagnostic-panel,
+.reward-panel,
+.answer-panel {
+  position: relative;
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 8px;
+  background: rgba(255, 249, 238, 0.78);
+  border: 1px solid rgba(106, 81, 52, 0.12);
+}
+
+.panel-label {
+  margin: 0 0 10px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel-head .panel-label {
+  margin-bottom: 0;
+}
+
+.puzzle-copy,
+.setup-copy,
+.reward-message,
+.answer-copy,
+.answer-note {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.puzzle-copy {
+  font-size: 1.34rem;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.setup-copy code {
+  padding: 0.14rem 0.35rem;
+  border-radius: 8px;
+  background: rgba(47, 38, 29, 0.07);
+  font-size: 0.92em;
+}
+
+.diagnostic-status {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.setup-panel.is-hidden,
+.diagnostic-panel.is-hidden {
+  display: none;
+}
+
+.diagnostic-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.secondary-button {
+  border: 1px solid rgba(106, 81, 52, 0.18);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.secondary-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.diagnostic-log {
+  margin: 14px 0 0;
+  padding: 14px;
+  overflow: auto;
+  border-radius: 8px;
+  background: #2c241c;
+  color: #f6efe5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.action-row {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.unlock-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 999px;
+  min-width: min(100%, 260px);
+  padding: 18px 30px;
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #fffdf8;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 38%),
+    linear-gradient(135deg, var(--accent-warm), var(--accent));
+  box-shadow: 0 16px 30px rgba(185, 70, 45, 0.28);
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    opacity 140ms ease;
+}
+
+.unlock-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 36px rgba(185, 70, 45, 0.32);
+}
+
+.button-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: #fff7e8;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.unlock-button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+  box-shadow: 0 8px 18px rgba(187, 90, 42, 0.18);
+}
+
+.hint-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.reward-panel,
+.answer-panel {
+  display: none;
+}
+
+.reward-panel.is-visible,
+.answer-panel.is-visible {
+  display: block;
+}
+
+.progress-track {
+  margin-top: 14px;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(47, 38, 29, 0.08);
+}
+
+.progress-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e98c41, #bb5a2a);
+  transition: width 220ms ease;
+}
+
+.reward-meta {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.answer-copy strong {
+  font-size: 1.34rem;
+}
+
+.answer-note {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 16px;
+  }
+
+  .hero-card {
+    padding: 24px 20px;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 1.82rem;
+  }
+
+  .puzzle-copy {
+    font-size: 1.2rem;
+  }
+
+  .unlock-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .diagnostic-actions {
+    width: 100%;
+  }
+
+  .secondary-button {
+    flex: 1;
+  }
+}
